@@ -19,6 +19,15 @@ nextBtn.addEventListener('click', () => {
     }, 400); // 与CSS中的transition时间保持一致
 });
 
- document.addEventListener('gesturestart', function(event) {
-       event.preventDefault();
- });
+document.addEventListener('touchmove', function (event) {
+  if (event.scale !== 1) { event.preventDefault(); }
+}, false);
+
+var lastTouchEnd = 0;
+document.addEventListener('touchend', function (event) {
+  var now = (new Date()).getTime();
+  if (now - lastTouchEnd <= 300) {
+    event.preventDefault();
+  }
+  lastTouchEnd = now;
+}, false);
