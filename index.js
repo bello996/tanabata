@@ -18,3 +18,7 @@ nextBtn.addEventListener('click', () => {
         currentPhoto.style.opacity = 1;
     }, 400); // 与CSS中的transition时间保持一致
 });
+
+ document.addEventListener('gesturestart', function(event) {
+       event.preventDefault();
+ });
